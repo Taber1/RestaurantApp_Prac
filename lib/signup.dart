@@ -127,7 +127,6 @@ class _SinState extends State<Sin> {
                     margin:EdgeInsets.only(top:40.0),
                     height: 45.0,
                     child: RaisedButton(onPressed: SignUp,
-                    color: Colors.red,
                     elevation: 2,
                     child: Text('REGISTER',
                   
