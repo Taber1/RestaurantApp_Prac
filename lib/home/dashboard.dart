@@ -25,13 +25,13 @@ class _dashboardState extends State<dashboard> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text("Dishes",
+                        Text("Items",
                             style: TextStyle(
                                 fontSize: 23, fontWeight: FontWeight.bold)),
                         InkWell(
                             child: Text('View More',
-                                style:
-                                    TextStyle(color: Colors.red, fontSize: 15)))
+                                style: TextStyle(
+                                    color: Colors.purple, fontSize: 15)))
                       ],
                     ),
                     SizedBox(height: 20),
@@ -56,7 +56,7 @@ class _dashboardState extends State<dashboard> {
                       }).toList(),
                     ),
                     SizedBox(height: 10),
-                    Text("Food Categories",
+                    Text("More Categories",
                         style: TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold)),
                     SizedBox(height: 15),
@@ -78,14 +78,14 @@ class _dashboardState extends State<dashboard> {
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Icon(Icons.local_drink,
-                                          color: Colors.red),
+                                          color: Colors.purple),
                                       SizedBox(width: 10),
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
                                           SizedBox(height: 4),
-                                          Text("Drinks",
+                                          Text("Clothes",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 20)),
@@ -107,14 +107,14 @@ class _dashboardState extends State<dashboard> {
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Icon(Icons.local_pizza,
-                                          color: Colors.red),
+                                          color: Colors.purple),
                                       SizedBox(width: 10),
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
                                           SizedBox(height: 4),
-                                          Text("Miscellaneous",
+                                          Text("Electronic",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 20)),
@@ -135,14 +135,14 @@ class _dashboardState extends State<dashboard> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
-                                      Icon(Icons.cake, color: Colors.red),
+                                      Icon(Icons.cake, color: Colors.purple),
                                       SizedBox(width: 10),
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
                                           SizedBox(height: 4),
-                                          Text("Desert",
+                                          Text("Households",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 20)),
@@ -163,14 +163,15 @@ class _dashboardState extends State<dashboard> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
-                                      Icon(Icons.fastfood, color: Colors.red),
+                                      Icon(Icons.fastfood,
+                                          color: Colors.purple),
                                       SizedBox(width: 10),
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
                                           SizedBox(height: 4),
-                                          Text("Fast Foods",
+                                          Text("Appliances",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 20)),
@@ -193,7 +194,7 @@ class _dashboardState extends State<dashboard> {
                                     children: <Widget>[
                                       Icon(
                                         Icons.details,
-                                        color: Colors.red,
+                                        color: Colors.purple,
                                       ),
                                       SizedBox(width: 10),
                                       Column(
@@ -201,7 +202,7 @@ class _dashboardState extends State<dashboard> {
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
                                           SizedBox(height: 4),
-                                          Text("Meals",
+                                          Text("Others",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 20)),
@@ -221,25 +222,26 @@ class _dashboardState extends State<dashboard> {
                                 fontSize: 23, fontWeight: FontWeight.bold)),
                         InkWell(
                             child: Text('View More',
-                                style:
-                                    TextStyle(color: Colors.red, fontSize: 15)))
+                                style: TextStyle(
+                                    color: Colors.purple, fontSize: 15)))
                       ],
                     ),
                     SizedBox(height: 20)
                   ]),
             ),
           ),
-            SliverGrid(
-                  gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                    delegate: SliverChildBuilderDelegate((BuildContext context, int index){
-                    return _grid_item(
-                      prod_name: item[index]['name'],
-                      prod_picture: item[index]['picture'],
-                  ); 
-                    },
+          SliverGrid(
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return _grid_item(
+                    prod_name: item[index]['name'],
+                    prod_picture: item[index]['picture'],
+                  );
+                },
                 childCount: item.length,
-                )
-             ),
+              )),
         ],
       ),
     );
@@ -280,9 +282,11 @@ class _Single_Item extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Container(
-                    child: Text(" $prod_name",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 23)),
+                    child: Flexible(
+                      child: Text(" $prod_name",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 23)),
+                    ),
                   ),
                   SizedBox(height: 7),
                   Container(
@@ -357,7 +361,7 @@ class _grid_item extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    height: 130,
+                    height: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
@@ -367,7 +371,7 @@ class _grid_item extends StatelessWidget {
                   SizedBox(height: 8),
                   Container(
                     height: 25,
-                    child: Text(prod_name,
+                    child: Text(" " + prod_name,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 23)),
                   ),

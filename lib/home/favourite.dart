@@ -3,13 +3,11 @@ import 'items_list.dart';
 import 'item_detais.dart';
 
 class favourite extends StatefulWidget {
-    
   @override
   _favouriteState createState() => _favouriteState();
 }
 
 class _favouriteState extends State<favourite> {
-  
   // var item = [
   //   {"name": 'Burger', "picture": 'https://cdn.pixabay.com/photo/2016/03/05/19/02/hamburger-1238246_1280.jpg'},
   //   {"name": 'Burger', "picture": 'https://cdn.pixabay.com/photo/2017/08/12/18/59/snack-2635035__340.jpg'},
@@ -26,33 +24,32 @@ class _favouriteState extends State<favourite> {
   //   {"name": 'Sandwich', "picture": 'https://cdn.pixabay.com/photo/2017/05/10/17/27/sandwich-2301387__340.jpg'},
   //   {"name": 'Spaghetti', "picture": 'https://cdn.pixabay.com/photo/2012/02/26/10/51/beef-17040__340.jpg'},
   // ] as List;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: CustomScrollView(
-              slivers: <Widget>[
-              SliverToBoxAdapter(
-                      child: Container(
-                        child: Text('My Favourite Items',
-                            style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold)),
-                      margin: EdgeInsets.only(top:15,bottom:15),
-                      ),
-              ),
-              SliverGrid(
-                  gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                    delegate: SliverChildBuilderDelegate((BuildContext context, int index){
-                    return _grid_item(
-                      prod_name: item[index]['name'],
-                      prod_picture: item[index]['picture'],
-                  ); 
-                    },
+        backgroundColor: Colors.white,
+        body: CustomScrollView(slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: Container(
+              child: Text('My Favourite Items',
+                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold)),
+              margin: EdgeInsets.only(top: 15, bottom: 15),
+            ),
+          ),
+          SliverGrid(
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return _grid_item(
+                    prod_name: item[index]['name'],
+                    prod_picture: item[index]['picture'],
+                  );
+                },
                 childCount: item.length,
-                )
-             ),
-         ] )
-      );
+              )),
+        ]));
   }
 }
 
@@ -65,48 +62,76 @@ class _grid_item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-            child: Hero(
+        child: Hero(
             tag: prod_picture,
-              child:GestureDetector(
-                  onTap:()=> Navigator.push(context, MaterialPageRoute(builder:(context)=>ItemDetails(prod_name,prod_picture))),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        height:130,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(image: NetworkImage(prod_picture), 
-                          fit: BoxFit.cover),
-                        ),
-                      ),
-                      SizedBox(height:8),
-                      Container(
-                        height: 25,
-                        child:Text(prod_name,
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold, fontSize: 23)),
-                      ),
-                      SizedBox(height:7),
-                      Container(
-                        child:Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Icon(Icons.star,color: Colors.yellowAccent,size: 11,),
-                            SizedBox(width:1),
-                            Icon(Icons.star,color: Colors.yellowAccent,size: 11,),
-                            SizedBox(width:1),
-                            Icon(Icons.star,color: Colors.yellowAccent,size: 11,),
-                            SizedBox(width:1),
-                            Icon(Icons.star,color: Colors.yellowAccent,size: 11,),
-                            SizedBox(width:1),
-                            Icon(Icons.star,color: Colors.yellowAccent,size: 11,),
-                            SizedBox(width:2),
-                            Text("5.0 (23 Reviews)", style: TextStyle(fontSize:11),)
-                          ],),
-                      )
-                    ],
+            child: GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ItemDetails(prod_name, prod_picture))),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                          image: NetworkImage(prod_picture), fit: BoxFit.cover),
+                    ),
                   ),
-    )));
+                  SizedBox(height: 8),
+                  Container(
+                    height: 25,
+                    child: Text(" " + prod_name,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 23)),
+                  ),
+                  SizedBox(height: 7),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellowAccent,
+                          size: 11,
+                        ),
+                        SizedBox(width: 1),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellowAccent,
+                          size: 11,
+                        ),
+                        SizedBox(width: 1),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellowAccent,
+                          size: 11,
+                        ),
+                        SizedBox(width: 1),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellowAccent,
+                          size: 11,
+                        ),
+                        SizedBox(width: 1),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellowAccent,
+                          size: 11,
+                        ),
+                        SizedBox(width: 2),
+                        Text(
+                          "5.0 (23 Reviews)",
+                          style: TextStyle(fontSize: 11),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )));
   }
 }
