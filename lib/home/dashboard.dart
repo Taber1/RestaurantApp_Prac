@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:tabb/home/favourite.dart';
-//import 'package:tabb/home/favourite.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'item_detais.dart';
 import 'items_list.dart';
 
@@ -35,26 +34,28 @@ class _dashboardState extends State<dashboard> {
                       ],
                     ),
                     SizedBox(height: 20),
-                    CarouselSlider(
-                      //  aspectRatio: 16/9,
-                      viewportFraction: 0.999,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      reverse: false,
-                      autoPlay: true,
-                      autoPlayInterval: Duration(seconds: 3),
-                      autoPlayAnimationDuration: Duration(milliseconds: 200),
+                    FutureBuilder(builder: (context, snapshot) {
+                      return CarouselSlider(
+                        //  aspectRatio: 16/9,
+                        viewportFraction: 0.999,
+                        initialPage: 0,
+                        enableInfiniteScroll: true,
+                        reverse: false,
+                        autoPlay: true,
+                        autoPlayInterval: Duration(seconds: 3),
+                        autoPlayAnimationDuration: Duration(milliseconds: 200),
 
-                      scrollDirection: Axis.horizontal,
-                      height: MediaQuery.of(context).size.height * 0.45,
+                        scrollDirection: Axis.horizontal,
+                        height: MediaQuery.of(context).size.height * 0.45,
 
-                      items: index.map((i) {
-                        return _Single_Item(
-                          prod_name: item[i]['name'],
-                          prod_picture: item[i]['picture'],
-                        );
-                      }).toList(),
-                    ),
+                        items: index.map((i) {
+                          return _Single_Item(
+                            prod_name: item[i]['name'],
+                            prod_picture: item[i]['picture'],
+                          );
+                        }).toList(),
+                      );
+                    }),
                     SizedBox(height: 10),
                     Text("More Categories",
                         style: TextStyle(
@@ -106,8 +107,7 @@ class _dashboardState extends State<dashboard> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
-                                      Icon(Icons.local_pizza,
-                                          color: Colors.purple),
+                                      Icon(Icons.bolt, color: Colors.purple),
                                       SizedBox(width: 10),
                                       Column(
                                         crossAxisAlignment:
@@ -135,7 +135,8 @@ class _dashboardState extends State<dashboard> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
-                                      Icon(Icons.cake, color: Colors.purple),
+                                      Icon(FontAwesomeIcons.chair,
+                                          color: Colors.purple),
                                       SizedBox(width: 10),
                                       Column(
                                         crossAxisAlignment:
@@ -163,8 +164,7 @@ class _dashboardState extends State<dashboard> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
-                                      Icon(Icons.fastfood,
-                                          color: Colors.purple),
+                                      Icon(Icons.bolt, color: Colors.purple),
                                       SizedBox(width: 10),
                                       Column(
                                         crossAxisAlignment:
@@ -193,7 +193,7 @@ class _dashboardState extends State<dashboard> {
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Icon(
-                                        Icons.details,
+                                        FontAwesomeIcons.angleDoubleRight,
                                         color: Colors.purple,
                                       ),
                                       SizedBox(width: 10),
