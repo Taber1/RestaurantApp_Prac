@@ -149,7 +149,7 @@ class _LoginState extends State<Login> {
           ),
         ),
       ),
-      resizeToAvoidBottomPadding: false,
+      // resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
     );
   }

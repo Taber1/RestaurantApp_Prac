@@ -159,7 +159,7 @@ class _SinState extends State<Sin> {
           ),
         ),
       ),
-      resizeToAvoidBottomPadding: false,
+      // resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
     );
   }
